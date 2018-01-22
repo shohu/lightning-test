@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: lightning
+  name: lightning-0
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: lightning-0
+    spec:
+      containers:
+      - image: asia.gcr.io/c0ban-cloud-mining/lightning-test
+        name: lightning-0
+        # command: ["/c0ban/bin/c0band-test"]
+        # args: ["-conf=/c0ban/c0ban-miner-parent.conf", "-datadir=/c0ban-block", "-debug", -maxtipage=99999999999"]
+        ports:
+        - name: node
+          containerPort: 18333
+        - name: rpc
+          containerPort: 18332
+        - name: lightning
+          containerPort: 42480
+        volumeMounts:
+        - mountPath: /block
+          name: block
+      volumes:
+      - name: block
+        gcePersistentDisk:
+          pdName: lightning-test-0
+          fsType: ext4

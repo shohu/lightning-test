@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  lightning-dev:
+    container_name: lightning-dev
+    image: lightning-dev
+    build:
+      context: .
+    volumes:
+      - ./lightning-dev:/lightning
+  lightning:
+    container_name: lightning
+    image: asia.gcr.io/c0ban-cloud-mining/lightning-test
+    build:
+      context: .
+    volumes:
+      - ./lightning:/lightning
+      - ./bitcoin-13:/bitcoin

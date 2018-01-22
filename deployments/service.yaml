@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: lightning
+  name: lightning-0
+  labels:
+    app: lightning-0
+spec:
+  selector:
+    app: lightning-0
+  ports:
+  - port: 18333
+    targetPort: 18333
+    name: node
+  - port: 18332
+    targetPort: 18332
+    name: rpc
+  - port: 42480
+    targetPort: 42480
+    name: lightning
