@@ -4,14 +4,14 @@ services:
     container_name: lightning-dev
     image: lightning-dev
     build:
-      context: .
+      context: ./lightning-dev
     volumes:
       - ./lightning-dev:/lightning
   lightning:
     container_name: lightning
     image: asia.gcr.io/c0ban-cloud-mining/lightning-test
     build:
-      context: .
+      context: ./lightning
     volumes:
       - ./lightning:/lightning
       - ./bitcoin-13:/bitcoin

@@ -36,16 +36,12 @@ RUN apt-get update && apt-get install -y \
   libevent-dev \
   bsdmainutils
 
-COPY . /lightning
-WORKDIR /lightning
+COPY ./bitcoin-15/bitcoin-cli-15 /usr/local/bin/bitcoin-cli
+COPY ./bitcoin-15/bitcoind-15 /usr/local/bin/bitcoind
+COPY ./lightning/lightning-cli /usr/local/bin
+COPY ./lightning/lightningd /usr/local/bin
+COPY ./lightning/libexec /usr/local/libexec
 
-# RUN ./autogen.sh
-# RUN ./configure
-# RUN make -j4
-# RUN make install
+WORKDIR /root
 
 CMD ["/sbin/init"]
-
-# RUN mkdir /c0ban
-#
-# CMD ["/c0ban/bin/c0band", "-conf=/c0ban/c0ban.conf", "-datadir=/c0ban-block/"]
