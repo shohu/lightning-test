@@ -29,4 +29,7 @@ else
 fi
 
 # DISK
-gcloud compute disks create --size 20GB --type pd-ssd lightning-test-0
+for i in `seq 0 1`
+do
+  gcloud compute disks create --size 20GB --type pd-ssd lightning-test-$i
+done
