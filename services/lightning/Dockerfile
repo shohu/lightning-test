@@ -38,10 +38,12 @@ RUN apt-get update && apt-get install -y \
 
 COPY ./bitcoin-15/bitcoin-cli-15 /usr/local/bin/bitcoin-cli
 COPY ./bitcoin-15/bitcoind-15 /usr/local/bin/bitcoind
+COPY ./c0ban-15/c0ban-cli /usr/local/bin
+COPY ./c0ban-15/c0band /usr/local/bin
 COPY ./lightning/lightning-cli /usr/local/bin
 COPY ./lightning/lightningd /usr/local/bin
 COPY ./lightning/libexec /usr/local/libexec
 
-WORKDIR /root
+COPY ./c0ban-15/c0ban.conf /root
 
 CMD ["/sbin/init"]

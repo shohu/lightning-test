@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: lightning
+  name: c0ban-0
+  labels:
+    app: c0ban-0
+spec:
+  selector:
+    app: c0ban-0
+  ports:
+  - port: 7771
+    targetPort: 7771
+    name: node
+  - port: 7772
+    targetPort: 7772
+    name: rpc
+  - port: 42480
+    targetPort: 42480
+    name: lightning
+  loadBalancerIP: 104.198.126.254
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: lightning
+  name: c0ban-1
+  labels:
+    app: c0ban-1
+spec:
+  selector:
+    app: c0ban-1
+  ports:
+  - port: 7771
+    targetPort: 7771
+    name: node
+  - port: 7772
+    targetPort: 7772
+    name: rpc
+  - port: 42480
+    targetPort: 42480
+    name: lightning
+  loadBalancerIP: 35.200.125.229
+  type: LoadBalancer

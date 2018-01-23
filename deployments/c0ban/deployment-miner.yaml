@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: lightning
+  name: miner
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: miner
+    spec:
+      containers:
+      - image: asia.gcr.io/c0ban-cloud-mining/stress-test-miner
+        name: miner
+        command: ["minerd"]
+        args: ["-a", "sha256d", "-o", "c0ban-0:7772", "-u", "c0ban", "-p", "c0ban", "--no-getwork", "--coinbase-addr=8Zw4ENB2V9KgxqT1bhN9mZmPdft4RuDmpC"]

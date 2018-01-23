@@ -13,8 +13,6 @@ spec:
       containers:
       - image: asia.gcr.io/c0ban-cloud-mining/lightning-test
         name: lightning-0
-        # command: ["/c0ban/bin/c0band-test"]
-        # args: ["-conf=/c0ban/c0ban-miner-parent.conf", "-datadir=/c0ban-block", "-debug", -maxtipage=99999999999"]
         ports:
         - name: node
           containerPort: 18333
@@ -46,8 +44,6 @@ spec:
       containers:
       - image: asia.gcr.io/c0ban-cloud-mining/lightning-test
         name: lightning-1
-        # command: ["/c0ban/bin/c0band-test"]
-        # args: ["-conf=/c0ban/c0ban-miner-parent.conf", "-datadir=/c0ban-block", "-debug", -maxtipage=99999999999"]
         ports:
         - name: node
           containerPort: 18333

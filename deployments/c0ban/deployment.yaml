@@ -1,0 +1,65 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: lightning
+  name: c0ban-0
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: c0ban-0
+    spec:
+      containers:
+      - image: asia.gcr.io/c0ban-cloud-mining/lightning-test
+        name: c0ban-0
+        command: ["/usr/local/bin/c0band"]
+        args: ["-conf=/root/c0ban.conf", "-datadir=/block/c0ban", "-debug", -maxtipage=99999999999"]
+        ports:
+        - name: node
+          containerPort: 7771
+        - name: rpc
+          containerPort: 7772
+        - name: lightning
+          containerPort: 42480
+        volumeMounts:
+        - mountPath: /block
+          name: block
+      volumes:
+      - name: block
+        gcePersistentDisk:
+          pdName: lightning-test-c0ban-0
+          fsType: ext4
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: lightning
+  name: c0ban-1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: c0ban-1
+    spec:
+      containers:
+      - image: asia.gcr.io/c0ban-cloud-mining/lightning-test
+        name: c0ban-1
+        command: ["/usr/local/bin/c0band"]
+        args: ["-conf=/root/c0ban.conf", "-datadir=/block/c0ban", "-debug", -maxtipage=99999999999"]
+        ports:
+        - name: node
+          containerPort: 7771
+        - name: rpc
+          containerPort: 7772
+        - name: lightning
+          containerPort: 42480
+        volumeMounts:
+        - mountPath: /block
+          name: block
+      volumes:
+      - name: block
+        gcePersistentDisk:
+          pdName: lightning-test-c0ban-1
+          fsType: ext4

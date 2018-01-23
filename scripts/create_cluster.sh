@@ -28,8 +28,15 @@ else
   echo "* Google Container Engine cluster \"${CLUSTER_NAME}\" already exists..."
 fi
 
-# DISK
+## DISK
+# bitcoin
 for i in `seq 0 1`
 do
   gcloud compute disks create --size 20GB --type pd-ssd lightning-test-$i
+done
+
+# c0ban
+for i in `seq 0 1`
+do
+  gcloud compute disks create --size 20GB --type pd-ssd lightning-test-c0ban-$i
 done
